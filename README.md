@@ -1,9 +1,6 @@
 # SMAKE Overview
 
-Smake (Simple-Make) is a C program that implements a lightweight version of the popular
-building utility "make". Smake reads from a simple file composed only of rules,
-and therefore no variables. It will build a program files specified by the rules,
-only building those that are out of date.
+Smake (Simple-Make) is a C program that implements a lightweight version of the popular building utility "make". Smake reads from a file composed of rules, and will build program files that are out of date.
 
 For Smakefile format instructions, see UsageInstructions.txt
 
