@@ -1,0 +1,29 @@
+SMAKE Usage Instructions
+
+To Build:
+    - type "make" with Makefile, all c files, and all h files in current directory.
+
+To Run:
+    - type "./smake" to build from Smakefile in your current working directory.
+    - Will build from first rule in Smakefile by default
+    - Optionally takes one command-line argument, which is to be the name of the target
+    of a rule to start building from.
+
+Smakefile format:
+    - Any line that does not begin with a '\t' character will be interpreted as a target and dependencies line.
+    - Any line that does begin with a '\t' character will be interpreted as a line of actions corresponding to the nearest
+    target above in the file.
+    - Spaces between dependencies distinguish them from each other.
+    - Any other white space before a target, around the separator ':', between dependencies, or between rules
+    is disregarded (besides new lines).
+    - If the first non-white space line begins with a '\t' character, smake will throw an error as there is non
+    target to correspond with those actions.
+
+Will Not Handle:
+    - variables
+    - circular dependencies
+    - multiple targets for a single rule.
+
+Notes:
+    - Hash table implementation seemed to work reasonably well. It was likely more complicated than a tree 
+    implementation, which was shown as it seemed to increase my code complexity. 

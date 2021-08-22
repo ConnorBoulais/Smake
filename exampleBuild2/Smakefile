@@ -1,0 +1,11 @@
+mytr : mytrFuncs.o mytr.o mytrFuncs.h
+	gcc -Wall -ansi -pedantic -g -o mytr mytrFuncs.o mytr.o
+
+mytr.o : mytr.c mytrFuncs.h
+	gcc -Wall -ansi -pedantic -g -c mytr.c
+
+mytrFuncs.o : mytrFuncs.c mytrFuncs.h
+	gcc -Wall -ansi -pedantic -g -c mytrFuncs.c
+
+clean :
+	rm *.o mytr core

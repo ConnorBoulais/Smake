@@ -1,0 +1,29 @@
+smake : smake.o smakeFuncs.o HashTable.o readline.o smakeFuncs.h HashTable.h readline.h
+	gcc -Wall -Werror -ansi -pedantic -g -o smake smake.o smakeFuncs.o HashTable.o readline.o smakeFuncs.h HashTable.h readline.h
+
+HashTests : HashTests.o HashTable.o readline.o HashTable.h readline.h
+	gcc -Wall -Werror -ansi -pedantic -g -o HashTests HashTests.o HashTable.o readline.o
+
+valgrind :
+	valgrind --leak-check=full --track-origins=yes ./smake
+
+smake.o : smake.c smakeFuncs.h
+	gcc -Wall -Werror -ansi -pedantic -g -c smake.c
+
+smakeFuncs.o : smakeFuncs.c smakeFuncs.h
+	gcc -Wall -Werror -ansi -pedantic -g -c smakeFuncs.c
+
+HashTests.o : HashTests.c HashTable.h readline.h
+	gcc -Wall -Werror -ansi -pedantic -g -c HashTests.c
+
+HashTable.o : HashTable.c HashTable.h
+	gcc -Wall -Werror -ansi -pedantic -g -c HashTable.c
+
+readline.o : readline.c readline.h
+	gcc -Wall -Werror -ansi -pedantic -g -c readline.c
+
+clean :
+	rm *.o smake core
+
+testclean :
+	rm *.o $(TESTMAIN) core
